@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ostream>
 #include <fstream>
+#include <sstream>
 #include <string>
 #include <unordered_set>
 #include <utility>
@@ -19,25 +20,24 @@ int main(int Argc, char* Argv[]) {
     fail("Usage: Day1 INPUT_PATH");
 
   string FilePath = Argv[1];
-  ifstream InputFile;
-  InputFile.open(FilePath, ios::binary);
+  ifstream InputFile (FilePath);
 
-  if (!InputFile.is_open())
-    fail("Unable to open file");
+  stringstream Buffer;
+  Buffer << InputFile.rdbuf();
 
   unordered_set<int> SeenNumbers;
   SeenNumbers.insert(Answer);
 
-  InputFile.seekg(0, ios::end);
-  int end = InputFile.tellg();
-  InputFile.seekg(0, ios::beg);
+  Buffer.seekg(0, ios::end);
+  int end = Buffer.tellg();
+  Buffer.seekg(0, ios::beg);
 
   string Line;
   for (;;) {
-    if (InputFile.tellg() == end)
-      InputFile.seekg(0, InputFile.beg);
+    if (Buffer.tellg() == end)
+      Buffer.seekg(0, ios::beg);
 
-    std::getline(InputFile, Line);
+    std::getline(Buffer, Line);
     Answer += std::atoi(Line.c_str());
 
     if (SeenNumbers.find(Answer) == SeenNumbers.end()) {
