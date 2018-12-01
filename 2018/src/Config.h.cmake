@@ -1,0 +1,2 @@
+#define CPPPlayground_VERSION_MAJOR @CPPplayground_VERSION_MAJOR@
+#define CPPplayground_VERSION_MINOR @CPPplayground_VERSION_MINOR@
