@@ -33,22 +33,16 @@ int main(int Argc, char* Argv[]) {
   InputFile.seekg(0, ios::beg);
 
   string Line;
-  bool FoundDouble = false;
-  while (!FoundDouble) {
+  for (;;) {
     if (InputFile.tellg() == end)
       InputFile.seekg(0, InputFile.beg);
 
     std::getline(InputFile, Line);
-
-    // Problem A
     Answer += std::atoi(Line.c_str());
 
-    // Problem B
     if (SeenNumbers.find(Answer) == SeenNumbers.end()) {
       SeenNumbers.insert(Answer);
     } else {
-      cout << Answer << " has been inserted before.\n";
-      FoundDouble = true;
       break; // We've met an answer for the second time
     }
   }
