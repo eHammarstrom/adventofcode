@@ -16,10 +16,13 @@ void fail(const char* Message) {
 int main(int Argc, char* Argv[]) {
   int Answer = 0;
 
+  /*
   if (Argc != 2)
     fail("Usage: Day1 INPUT_PATH");
 
   string FilePath = Argv[1];
+  */
+  string FilePath = "/home/ehammarstrom/git/adventofcode/2018/basse_input";
   ifstream InputFile (FilePath);
 
   stringstream Buffer;
