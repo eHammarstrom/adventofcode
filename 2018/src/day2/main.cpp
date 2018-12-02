@@ -60,12 +60,12 @@ void solveB(vector<string> Lines) {
             Answer += A[I];
           }
         }
-        goto done;
+
+	cout << Answer << '\n';
+	return;
       }
     }
   }
-done:
-  cout << Answer << '\n';
 }
 
 int main() {
