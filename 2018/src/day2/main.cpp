@@ -55,10 +55,10 @@ void solveB(vector<string> Lines) {
 
       if (Diffs == 1) {
         // building here is faster than while diffing
-	for (int I = 0; I < IdLength; ++I) {
-	  if (A[I] == B[I]) {
+        for (int I = 0; I < IdLength; ++I) {
+          if (A[I] == B[I]) {
             Answer += A[I];
-	  }
+          }
         }
         goto done;
       }

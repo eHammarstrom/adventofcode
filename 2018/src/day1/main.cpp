@@ -1,6 +1,6 @@
+#include <fstream>
 #include <iostream>
 #include <ostream>
-#include <fstream>
 #include <sstream>
 #include <string>
 #include <unordered_set>
@@ -8,12 +8,12 @@
 
 using namespace std;
 
-void fail(const char* Message) {
+void fail(const char *Message) {
   cerr << Message << '\n';
   exit(1);
 }
 
-int main(int Argc, char* Argv[]) {
+int main(int Argc, char *Argv[]) {
   int Answer = 0;
 
   /*
@@ -23,7 +23,7 @@ int main(int Argc, char* Argv[]) {
   string FilePath = Argv[1];
   */
   string FilePath = "/home/ehammarstrom/git/adventofcode/2018/basse_input";
-  ifstream InputFile (FilePath);
+  ifstream InputFile(FilePath);
 
   stringstream Buffer;
   Buffer << InputFile.rdbuf();
