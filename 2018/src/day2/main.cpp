@@ -26,18 +26,18 @@ void solveA(stringstream *Buffer) {
 
     bool C2 = false;
     bool C3 = false;
-
     for (auto &&[Key, Value] : Letters) {
-      if (Value == 3)
-        C3 = true;
-      else if (Value == 2)
-        C2 = true;
-    }
+      if (C2 && C3)
+        break;
 
-    if (C2)
-      ++IdCount.first;
-    if (C3)
-      ++IdCount.second;
+      if (Value == 3 && !C3) {
+        ++IdCount.first;
+        C3 = true;
+      } else if (Value == 2 && !C2) {
+        ++IdCount.second;
+        C2 = true;
+      }
+    }
   }
 
   cout << IdCount.first * IdCount.second << '\n';
@@ -59,17 +59,20 @@ void solveB(stringstream *Buffer) {
       string B = *IB;
 
       int Diffs = 0;
-      Answer = "";
-      for (int I = 0; I < IdLength; ++I) {
+      for (int I = 0; I < IdLength && Diffs < 2; ++I) {
         if (A[I] != B[I]) {
           ++Diffs;
-        } else {
-          Answer += A[I];
         }
       }
 
       if (Diffs == 1) {
-	goto done;
+        // building here is faster than while diffing
+	for (int I = 0; I < IdLength; ++I) {
+	  if (A[I] == B[I]) {
+            Answer += A[I];
+	  }
+        }
+        goto done;
       }
     }
   }
@@ -89,8 +92,8 @@ int main(int Argc, char *Argv[]) {
   stringstream Buffer;
   Buffer << InputFile.rdbuf();
 
-  // solveA(&Buffer);
-  solveB(&Buffer);
+  solveA(&Buffer);
+  // solveB(&Buffer);
 
   return 0;
 }

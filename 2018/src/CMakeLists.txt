@@ -12,7 +12,5 @@ add_executable (Day2 day2/main.cpp)
 
 set (CMAKE_CXX_FLAGS_RELEASE_INIT "-O4 -DNDEBUG")
 
-target_link_libraries (Day1 profiler)
-target_link_libraries (Day1 tcmalloc)
-target_link_libraries (Day2 profiler)
-target_link_libraries (Day2 tcmalloc)
+# target_link_libraries (DayX profiler)
+# target_link_libraries (DayX tcmalloc)
