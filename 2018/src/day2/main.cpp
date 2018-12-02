@@ -52,14 +52,14 @@ void solveB(stringstream *Buffer) {
 
   int IdLength = Lines[0].length();
 
-  vector<pair<string, string>> OffByOne;
+  string Answer;
   for (auto IA = Lines.begin(); IA < Lines.end(); ++IA) {
     string A = *IA;
     for (auto IB = IA + 1; IB < Lines.end(); ++IB) {
       string B = *IB;
 
       int Diffs = 0;
-      string Answer;
+      Answer = "";
       for (int I = 0; I < IdLength; ++I) {
         if (A[I] != B[I]) {
           ++Diffs;
@@ -69,10 +69,12 @@ void solveB(stringstream *Buffer) {
       }
 
       if (Diffs == 1) {
-        cout << Answer << '\n';
+	goto done;
       }
     }
   }
+done:
+  cout << Answer << '\n';
 }
 
 int main(int Argc, char *Argv[]) {
