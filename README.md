@@ -6,4 +6,4 @@ Ran on i7 2600k, ubuntu 18.04.1, clang 7.0.1
 |Day | Part A |	Part B |
 |----|--------|--------|
 |1   | _      | ~30ms  |
-|2   | 3-4ms  | 3ms    |
+|2   | 3-4ms  | 2-3ms  |

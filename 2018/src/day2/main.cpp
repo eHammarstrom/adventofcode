@@ -9,15 +9,9 @@
 
 using namespace std;
 
-void fail(const char *Message) {
-  cerr << Message << '\n';
-  exit(1);
-}
-
-void solveA(stringstream *Buffer) {
+void solveA(vector<string> Lines) {
   pair<int, int> IdCount(0, 0);
-  string Line;
-  while (std::getline(*Buffer, Line)) {
+  for (string Line : Lines) {
     map<char, int> Letters;
 
     for (char C : Line) {
@@ -43,13 +37,7 @@ void solveA(stringstream *Buffer) {
   cout << IdCount.first * IdCount.second << '\n';
 }
 
-void solveB(stringstream *Buffer) {
-  vector<string> Lines;
-  string Line;
-  while (std::getline(*Buffer, Line)) {
-    Lines.push_back(Line);
-  }
-
+void solveB(vector<string> Lines) {
   int IdLength = Lines[0].length();
 
   string Answer;
@@ -80,20 +68,18 @@ done:
   cout << Answer << '\n';
 }
 
-int main(int Argc, char *Argv[]) {
-  int Answer = 0;
-
-  if (Argc != 2)
-    fail("Usage: Day1 INPUT_PATH");
-
-  string FilePath = Argv[1];
-  ifstream InputFile(FilePath);
-
+int main() {
   stringstream Buffer;
-  Buffer << InputFile.rdbuf();
+  Buffer << std::cin.rdbuf();
 
-  solveA(&Buffer);
-  // solveB(&Buffer);
+  vector<string> Lines;
+  string Line;
+  while (std::getline(Buffer, Line)) {
+    Lines.push_back(Line);
+  }
+
+  // solveA(Lines);
+  solveB(Lines);
 
   return 0;
 }
